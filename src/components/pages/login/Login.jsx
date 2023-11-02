@@ -16,6 +16,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { Link, useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
+import { onSigIn } from "../../../firebaseConfig";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -126,7 +127,7 @@ const Login = () => {
                 <Button
                   variant="contained"
                   fullWidth
-                  onClick={()=>navigate("/register")}
+                  onClick={() => navigate("/register")}
                   type="button"
                   sx={{
                     color: "white",
