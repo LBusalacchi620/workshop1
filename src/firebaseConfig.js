@@ -28,7 +28,7 @@ const auth = getAuth(app);
 export const onSigIn = async ({ email, password }) => {
   try {
     const res = await signInWithEmailAndPassword(auth, email, password);
-    console.log(res);
+    return res;
   } catch (error) {
     console.log(error);
   }
