@@ -16,7 +16,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { Link, useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
-import { onSigIn } from "../../../firebaseConfig";
+import { loginGoogle, onSigIn } from "../../../firebaseConfig";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -41,6 +41,11 @@ const Login = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const googleSignIn = async () => {
+    let res = await loginGoogle();
+    console.log(res);
   };
 
   return (
@@ -125,6 +130,7 @@ const Login = () => {
                 <Button
                   variant="contained"
                   startIcon={<GoogleIcon />}
+                  onClick={googleSignIn}
                   type="button"
                   fullWidth
                   sx={{

@@ -2,6 +2,9 @@ import { initializeApp } from "firebase/app";
 import {
   signInWithEmailAndPassword,
   getAuth,
+  signOut,
+  signInWithPopup,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import {} from "firebase/firestore";
@@ -33,12 +36,20 @@ export const onSigIn = async ({ email, password }) => {
     console.log(error);
   }
 };
+//LogOut
 
-//Register
+export const logOut = () => {
+  signOut(auth);
+};
 
 //Login con google
+let googleProvider = new GoogleAuthProvider();
+export const loginGoogle = async () => {
+  const res = await signInWithPopup(auth, googleProvider);
+  console.log(res);
+};
 
-//LogOut
+//Register
 
 //Olvidé la contraseña
 
