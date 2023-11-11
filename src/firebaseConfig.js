@@ -50,6 +50,15 @@ export const loginGoogle = async () => {
 };
 
 //Register
+export const signUp = async ({ email, password }) => {
+  try {
+    let res = await createUserWithEmailAndPassword(auth, email, password);
+    return res;
+  } catch (error) {
+    console.log(error);
+    throw error; //Lanza el error para que pueda ser capturado en el componente Register
+  }
+};
 
 //Olvidé la contraseña
 
