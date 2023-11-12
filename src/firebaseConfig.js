@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import {} from "firebase/firestore";
 import {} from "firebase/storage";
@@ -61,6 +62,15 @@ export const signUp = async ({ email, password }) => {
 };
 
 //Olvidé la contraseña
+
+export const forgotPassword = async (email) => {
+  try {
+    let res = await sendPasswordResetEmail(auth, email);
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //                    base de datos
 

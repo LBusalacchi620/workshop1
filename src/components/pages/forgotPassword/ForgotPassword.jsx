@@ -1,10 +1,16 @@
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
+import { forgotPassword } from "../../../firebaseConfig";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
-
+  const [email, setEmail] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let res = await forgotPassword(email);
+    navigate("/login");
+  };
   return (
     <div>
       <Box
@@ -22,7 +28,7 @@ const ForgotPassword = () => {
         <Typography variant="h5" color={"primary"}>
           ¿Olvidaste tu contraseña?
         </Typography>
-        <form>
+        <form onSubmit={handleSubmit}>
           <Grid
             container
             rowSpacing={2}
@@ -36,6 +42,7 @@ const ForgotPassword = () => {
                 label="Email"
                 fullWidth
                 name="email"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={10} md={12}>

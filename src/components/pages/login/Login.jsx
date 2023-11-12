@@ -12,7 +12,6 @@ import {
   Typography,
 } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
-
 import { Link, useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
@@ -37,7 +36,9 @@ const Login = () => {
     try {
       const res = await onSigIn(userCredentials);
       console.log(res);
-      navigate("/");
+      if (res.user) {
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }
